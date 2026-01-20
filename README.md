@@ -15,11 +15,38 @@ from cencori import Cencori
 
 cencori = Cencori(api_key="your-api-key")
 
+# Chat
 response = cencori.ai.chat(
     messages=[{"role": "user", "content": "Hello!"}]
 )
-
 print(response.content)
+
+# Embeddings
+embedding = cencori.ai.embeddings(
+    input="Hello world",
+    model="text-embedding-3-small"
+)
+print(len(embedding.embeddings[0]))
+```
+
+## Async Support
+
+All methods have async counterparts:
+
+```python
+import asyncio
+from cencori import Cencori
+
+async def main():
+    cencori = Cencori()
+    
+    # Async chat
+    response = await cencori.ai.async_chat(
+        messages=[{"role": "user", "content": "Hello!"}]
+    )
+    print(response.content)
+
+asyncio.run(main())
 ```
 
 ## Streaming

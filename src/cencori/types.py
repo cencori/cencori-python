@@ -1,7 +1,7 @@
 """Type definitions for Cencori SDK."""
 
 from dataclasses import dataclass
-from typing import List, Literal, Optional
+from typing import List, Literal, Optional, Union
 
 
 @dataclass
@@ -46,3 +46,36 @@ class StreamChunk:
     """A chunk from streaming response."""
     delta: str
     finish_reason: Optional[Literal["stop", "length", "content_filter", "error"]] = None
+    error: Optional[str] = None
+
+
+# Completion types
+@dataclass
+class CompletionRequest:
+    """Parameters for text completion."""
+    prompt: str
+    model: str = "gemini-2.5-flash"
+    temperature: Optional[float] = None
+    max_tokens: Optional[int] = None
+
+
+# Embedding types
+@dataclass
+class EmbeddingRequest:
+    """Parameters for embedding generation."""
+    input: Union[str, List[str]]
+    model: str = "text-embedding-3-small"
+
+
+@dataclass
+class EmbeddingUsage:
+    """Token usage for embeddings."""
+    total_tokens: int
+
+
+@dataclass
+class EmbeddingResponse:
+    """Response from embedding generation."""
+    model: str
+    embeddings: List[List[float]]
+    usage: EmbeddingUsage
