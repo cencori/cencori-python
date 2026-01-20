@@ -65,4 +65,10 @@ __all__ = [
     "EmbeddingRequest",
     "EmbeddingResponse",
     "EmbeddingUsage",
+    # New types from instruction
+    "Project",
+    "CreateProjectParams",
+    "APIKey",
+    "CreateAPIKeyParams",
+    "MetricsResponse",
 ]

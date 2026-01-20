@@ -5,6 +5,9 @@ from typing import Any, Dict, Optional
 import httpx
 
 from .ai import AIModule
+from .api_keys import APIKeysModule
+from .metrics import MetricsModule
+from .projects import ProjectsModule
 from .errors import AuthenticationError, CencoriError, RateLimitError, SafetyError
 
 
@@ -99,6 +102,10 @@ class Cencori:
         
         # Initialize modules
         self.ai = AIModule(self)
+        self.projects = ProjectsModule(self)
+        self.api_keys = APIKeysModule(self)
+        self.metrics = MetricsModule(self)
+        
         self.compute = ComputeModule()
         self.workflow = WorkflowModule()
         self.storage = StorageModule()
