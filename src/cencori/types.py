@@ -202,3 +202,21 @@ class MetricsResponse:
     providers: dict[str, Breakdown]
     models: dict[str, Breakdown]
 
+
+@dataclass
+class WebTelemetryPayload:
+    """Payload for reporting web request telemetry."""
+
+    host: str
+    method: str
+    path: str
+    status_code: int
+    request_id: Optional[str] = None
+    query_string: Optional[str] = None
+    message: Optional[str] = None
+    user_agent: Optional[str] = None
+    referer: Optional[str] = None
+    ip_address: Optional[str] = None
+    country_code: Optional[str] = None
+    latency_ms: Optional[int] = None
+
