@@ -101,6 +101,25 @@ print(f"Total Requests: {metrics.requests.total}")
 print(f"Total Cost: ${metrics.cost.total_usd}")
 ```
 
+## Web Telemetry
+
+```python
+from cencori.types import WebTelemetryPayload
+
+# Best-effort logging to Cencori's web traffic dashboard.
+# This call never raises on network failures.
+cencori.telemetry.report_web_request(
+    WebTelemetryPayload(
+        host="app.example.com",
+        method="GET",
+        path="/api/chat",
+        status_code=200,
+        user_agent="my-app/1.0",
+        latency_ms=87,
+    )
+)
+```
+
 ## Error Handling
 
 ```python

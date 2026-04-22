@@ -26,6 +26,7 @@ Example:
 """
 
 from .client import Cencori
+from .telemetry import TelemetryModule
 from .errors import (
     CencoriError,
     AuthenticationError,
@@ -42,6 +43,7 @@ from .types import (
     EmbeddingRequest,
     EmbeddingResponse,
     EmbeddingUsage,
+    WebTelemetryPayload,
 )
 
 __version__ = "0.2.0"
@@ -65,6 +67,8 @@ __all__ = [
     "EmbeddingRequest",
     "EmbeddingResponse",
     "EmbeddingUsage",
+    "TelemetryModule",
+    "WebTelemetryPayload",
     # New types from instruction
     "Project",
     "CreateProjectParams",

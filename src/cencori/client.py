@@ -7,6 +7,7 @@ import httpx
 from .ai import AIModule
 from .api_keys import APIKeysModule
 from .metrics import MetricsModule
+from .telemetry import TelemetryModule
 from .projects import ProjectsModule
 from .errors import AuthenticationError, CencoriError, RateLimitError, SafetyError
 
@@ -105,6 +106,7 @@ class Cencori:
         self.projects = ProjectsModule(self)
         self.api_keys = APIKeysModule(self)
         self.metrics = MetricsModule(self)
+        self.telemetry = TelemetryModule(self)
         
         self.compute = ComputeModule()
         self.workflow = WorkflowModule()
