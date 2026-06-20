@@ -7,8 +7,6 @@ from .types import (
     AgentConfig,
     AgentKey,
     AgentListItem,
-    CreateAgentKeyParams,
-    CreateAgentParams,
     UpdateAgentParams,
 )
 

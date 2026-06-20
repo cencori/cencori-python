@@ -4,12 +4,9 @@ from datetime import datetime
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
 
 from .types import (
-    CreateNamespaceOptions,
     Memory,
     MemoryNamespace,
-    SearchMemoryOptions,
     SearchResult,
-    StoreMemoryOptions,
 )
 
 if TYPE_CHECKING:

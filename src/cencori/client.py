@@ -49,7 +49,7 @@ class WorkflowModule:
         """Trigger a workflow."""
         raise NotImplementedError("Workflow module coming soon")
 
-    def create(self, name: str, steps: list) -> Any:
+    def create(self, name: str, steps: list[Any]) -> Any:
         """Create a workflow."""
         raise NotImplementedError("Workflow module coming soon")
 
@@ -86,7 +86,7 @@ class VectorsSubmodule:
         """Upsert vectors."""
         raise NotImplementedError("Storage module coming soon")
 
-    def delete(self, ids: list) -> Any:
+    def delete(self, ids: list[Any]) -> Any:
         """Delete vectors by ID."""
         raise NotImplementedError("Storage module coming soon")
 
@@ -98,7 +98,7 @@ class KnowledgeSubmodule:
         """Query the knowledge base."""
         raise NotImplementedError("Storage module coming soon")
 
-    def add(self, documents: list) -> Any:
+    def add(self, documents: list[Any]) -> Any:
         """Add documents to knowledge base."""
         raise NotImplementedError("Storage module coming soon")
 
