@@ -13,7 +13,7 @@ precommit := uv + " run pre-commit"
 setup:
     {{ uv }} venv
     {{ uv }} sync --extra dev
-    {{ uv }} run pre-commit install
+    {{ uv }} run pre-commit install --config .pc.yaml
 
 # ── Lint & Format ────────────────────────────────────────────────────────
 

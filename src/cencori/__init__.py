@@ -27,21 +27,26 @@ Example:
 
 from .client import Cencori
 from .errors import (
-    CencoriError,
     AuthenticationError,
+    CencoriError,
     RateLimitError,
     SafetyError,
 )
 from .types import (
-    Message,
+    APIKey,
     ChatParams,
     ChatResponse,
-    StreamChunk,
-    Usage,
     CompletionRequest,
+    CreateAPIKeyParams,
+    CreateProjectParams,
     EmbeddingRequest,
     EmbeddingResponse,
     EmbeddingUsage,
+    Message,
+    MetricsResponse,
+    Project,
+    StreamChunk,
+    Usage,
 )
 
 __version__ = "0.2.0"
