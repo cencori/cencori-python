@@ -129,6 +129,10 @@ except SafetyError as e:
 | Anthropic | `claude-3-opus`, `claude-3-sonnet`, `claude-3-haiku` |
 | Google | `gemini-2.5-flash`, `gemini-2.0-flash` |
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, workflow, and guidelines.
+
 ## License
 
 MIT © FohnAI
