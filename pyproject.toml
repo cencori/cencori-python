@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cencori"
-version = "0.1.0"
+version = "1.2.1"
 description = "Official Python SDK for Cencori - AI Infrastructure for Production"
 readme = "README.md"
 license = "MIT"
@@ -24,7 +24,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-keywords = ["ai", "llm", "openai", "anthropic", "gemini", "api", "gateway", "infrastructure"]
+keywords = ["ai", "llm", "openai", "anthropic", "gemini", "api", "gateway", "infrastructure", "rag", "agents", "memory"]
 requires-python = ">=3.8"
 dependencies = [
     "httpx>=0.24.0",
