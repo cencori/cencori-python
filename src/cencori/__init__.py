@@ -9,17 +9,17 @@ Every operation is secured, logged, and tracked.
 Example:
     >>> from cencori import Cencori
     >>> cencori = Cencori(api_key="csk_...")
-    >>> 
+    >>>
     >>> # Chat completion
     >>> response = cencori.ai.chat(
     ...     messages=[{"role": "user", "content": "Hello!"}]
     ... )
     >>> print(response.content)
-    >>> 
+    >>>
     >>> # Streaming
     >>> for chunk in cencori.ai.chat_stream(messages=[...]):
     ...     print(chunk.delta, end="")
-    >>> 
+    >>>
     >>> # Embeddings
     >>> embeddings = cencori.ai.embeddings(input="Hello world")
     >>> print(len(embeddings.embeddings[0]))
