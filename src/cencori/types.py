@@ -7,6 +7,7 @@ from typing import List, Literal, Optional, Union
 @dataclass
 class Message:
     """A chat message."""
+
     role: Literal["system", "user", "assistant"]
     content: str
 
@@ -14,6 +15,7 @@ class Message:
 @dataclass
 class ChatParams:
     """Parameters for chat completion."""
+
     messages: List[Message]
     model: str = "gemini-2.5-flash"
     temperature: Optional[float] = None
@@ -25,6 +27,7 @@ class ChatParams:
 @dataclass
 class Usage:
     """Token usage statistics."""
+
     prompt_tokens: int
     completion_tokens: int
     total_tokens: int
@@ -33,6 +36,7 @@ class Usage:
 @dataclass
 class ChatResponse:
     """Response from chat completion."""
+
     content: str
     model: str
     provider: str
@@ -44,6 +48,7 @@ class ChatResponse:
 @dataclass
 class StreamChunk:
     """A chunk from streaming response."""
+
     delta: str
     finish_reason: Optional[Literal["stop", "length", "content_filter", "error"]] = None
     error: Optional[str] = None
@@ -53,6 +58,7 @@ class StreamChunk:
 @dataclass
 class CompletionRequest:
     """Parameters for text completion."""
+
     prompt: str
     model: str = "gemini-2.5-flash"
     temperature: Optional[float] = None
@@ -63,6 +69,7 @@ class CompletionRequest:
 @dataclass
 class EmbeddingRequest:
     """Parameters for embedding generation."""
+
     input: Union[str, List[str]]
     model: str = "text-embedding-3-small"
 
@@ -70,12 +77,14 @@ class EmbeddingRequest:
 @dataclass
 class EmbeddingUsage:
     """Token usage for embeddings."""
+
     total_tokens: int
 
 
 @dataclass
 class EmbeddingResponse:
     """Response from embedding generation."""
+
     model: str
     embeddings: List[List[float]]
     usage: EmbeddingUsage
@@ -85,6 +94,7 @@ class EmbeddingResponse:
 @dataclass
 class Project:
     """A Cencori project."""
+
     id: str
     name: str
     slug: str
@@ -99,6 +109,7 @@ class Project:
 @dataclass
 class CreateProjectParams:
     """Parameters for creating a project."""
+
     name: str
     description: Optional[str] = None
     visibility: Optional[str] = None
@@ -107,6 +118,7 @@ class CreateProjectParams:
 @dataclass
 class Stats:
     """Project statistics."""
+
     total_requests: int
     total_cost_usd: float
     last_used_at: Optional[str] = None
@@ -116,6 +128,7 @@ class Stats:
 @dataclass
 class APIKey:
     """A Cencori API key."""
+
     id: str
     name: str
     environment: str
@@ -129,6 +142,7 @@ class APIKey:
 @dataclass
 class CreateAPIKeyParams:
     """Parameters for creating an API key."""
+
     name: str
     environment: str
 
@@ -136,6 +150,7 @@ class CreateAPIKeyParams:
 @dataclass
 class DailyStat:
     """Daily usage statistic."""
+
     date: str
     count: int
     cost_usd: float
@@ -144,6 +159,7 @@ class DailyStat:
 @dataclass
 class KeyUsageStats:
     """Usage statistics for an API key."""
+
     key_id: str
     total_requests: int
     total_cost_usd: float
@@ -192,6 +208,7 @@ class Breakdown:
 @dataclass
 class MetricsResponse:
     """Response from metrics API."""
+
     period: str
     start_date: str
     end_date: str
@@ -201,4 +218,3 @@ class MetricsResponse:
     latency: LatencyMetrics
     providers: dict[str, Breakdown]
     models: dict[str, Breakdown]
-

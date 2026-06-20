@@ -9,17 +9,17 @@ Every operation is secured, logged, and tracked.
 Example:
     >>> from cencori import Cencori
     >>> cencori = Cencori(api_key="csk_...")
-    >>> 
+    >>>
     >>> # Chat completion
     >>> response = cencori.ai.chat(
     ...     messages=[{"role": "user", "content": "Hello!"}]
     ... )
     >>> print(response.content)
-    >>> 
+    >>>
     >>> # Streaming
     >>> for chunk in cencori.ai.chat_stream(messages=[...]):
     ...     print(chunk.delta, end="")
-    >>> 
+    >>>
     >>> # Embeddings
     >>> embeddings = cencori.ai.embeddings(input="Hello world")
     >>> print(len(embeddings.embeddings[0]))
@@ -27,21 +27,26 @@ Example:
 
 from .client import Cencori
 from .errors import (
-    CencoriError,
     AuthenticationError,
+    CencoriError,
     RateLimitError,
     SafetyError,
 )
 from .types import (
-    Message,
+    APIKey,
     ChatParams,
     ChatResponse,
-    StreamChunk,
-    Usage,
     CompletionRequest,
+    CreateAPIKeyParams,
+    CreateProjectParams,
     EmbeddingRequest,
     EmbeddingResponse,
     EmbeddingUsage,
+    Message,
+    MetricsResponse,
+    Project,
+    StreamChunk,
+    Usage,
 )
 
 __version__ = "0.2.0"
