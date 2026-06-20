@@ -16,7 +16,7 @@ class TestClientInitialization:
         client = Cencori(api_key=api_key)
 
         assert client._api_key == api_key
-        assert client._base_url == "https://cencori.com"
+        assert client._base_url == "https://api.cencori.com"
         assert client._timeout == 30.0
 
     def test_init_with_env_var(self, api_key: str) -> None:
@@ -108,7 +108,7 @@ class TestUtilityMethods:
     def test_get_base_url(self, api_key: str) -> None:
         """Test get_base_url method."""
         client = Cencori(api_key=api_key)
-        assert client.get_base_url() == "https://cencori.com"
+        assert client.get_base_url() == "https://api.cencori.com"
 
     def test_get_api_key(self, api_key: str) -> None:
         """Test get_api_key method."""
