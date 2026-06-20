@@ -63,13 +63,13 @@ from cencori import Cencori
 
 async def main():
     cencori = Cencori()
-    
+
     # Async chat
     response = await cencori.ai.async_chat(
         messages=[{"role": "user", "content": "Hello!"}]
     )
     print(response.content)
-    
+
     # Async generate object
     result = await cencori.ai.async_generate_object(
         model="gpt-4o",

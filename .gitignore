@@ -21,6 +21,7 @@ wheels/
 .installed.cfg
 *.egg
 
+temp_auto_push.bat
 # Virtual environments
 venv/
 ENV/
@@ -29,7 +30,6 @@ env/
 
 # IDE
 .idea/
-.vscode/
 *.swp
 *.swo
 
@@ -46,3 +46,5 @@ htmlcov/
 # Type checking
 .mypy_cache/
 .ruff_cache/
+.gitignore
+branch_structure.json
