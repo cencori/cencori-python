@@ -4,11 +4,22 @@ from typing import Any, Dict, Optional, cast
 
 import httpx
 
+from .agents import AgentsModule
 from .ai import AIModule
 from .api_keys import APIKeysModule
-from .errors import AuthenticationError, CencoriError, RateLimitError, SafetyError
+from .errors import (
+    AuthenticationError,
+    CencoriError,
+    InsufficientCreditsError,
+    ProviderError,
+    RateLimitError,
+    SafetyError,
+)
+from .memory import MemoryModule
 from .metrics import MetricsModule
 from .projects import ProjectsModule
+from .sessions import SessionsModule
+from .telemetry import TelemetryModule
 
 
 class ComputeModule:
@@ -102,6 +113,10 @@ class Cencori:
 
         # Initialize modules
         self.ai = AIModule(self)
+        self.agents = AgentsModule(self)
+        self.memory = MemoryModule(self)
+        self.sessions = SessionsModule(self)
+        self.telemetry = TelemetryModule(self)
         self.projects = ProjectsModule(self)
         self.api_keys = APIKeysModule(self)
         self.metrics = MetricsModule(self)
@@ -221,6 +236,12 @@ class Cencori:
 
         if response.status_code == 429:
             raise RateLimitError()
+
+        if response.status_code == 402:
+            raise InsufficientCreditsError()
+
+        if response.status_code == 502:
+            raise ProviderError()
 
         data = cast(Dict[str, Any], response.json())
 

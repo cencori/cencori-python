@@ -76,6 +76,26 @@ class TestClientModules:
         client = Cencori(api_key=api_key)
         assert hasattr(client, "storage")
 
+    def test_agents_module_exists(self, api_key: str) -> None:
+        """Test agents module is initialized."""
+        client = Cencori(api_key=api_key)
+        assert hasattr(client, "agents")
+
+    def test_memory_module_exists(self, api_key: str) -> None:
+        """Test memory module is initialized."""
+        client = Cencori(api_key=api_key)
+        assert hasattr(client, "memory")
+
+    def test_sessions_module_exists(self, api_key: str) -> None:
+        """Test sessions module is initialized."""
+        client = Cencori(api_key=api_key)
+        assert hasattr(client, "sessions")
+
+    def test_telemetry_module_exists(self, api_key: str) -> None:
+        """Test telemetry module is initialized."""
+        client = Cencori(api_key=api_key)
+        assert hasattr(client, "telemetry")
+
 
 class TestComingSoonModules:
     """Test that coming soon modules raise NotImplementedError."""
