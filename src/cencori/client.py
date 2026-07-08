@@ -20,6 +20,7 @@ from .metrics import MetricsModule
 from .projects import ProjectsModule
 from .sessions import SessionsModule
 from .telemetry import TelemetryModule
+from .vision import VisionModule
 
 
 class ComputeModule:
@@ -113,6 +114,7 @@ class Cencori:
 
         # Initialize modules
         self.ai = AIModule(self)
+        self.vision = VisionModule(self)
         self.agents = AgentsModule(self)
         self.memory = MemoryModule(self)
         self.sessions = SessionsModule(self)
