@@ -9,6 +9,7 @@ Every operation is secured, logged, and tracked.
 
 from .client import Cencori
 from .vision import VisionModule
+from .documents import DocumentsModule
 from .errors import (
     AuthenticationError,
     CencoriError,
@@ -79,10 +80,11 @@ from .types import (
     WebTelemetryPayload,
 )
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 __all__ = [
     "Cencori",
     "VisionModule",
+    "DocumentsModule",
     # Errors
     "CencoriError",
     "AuthenticationError",

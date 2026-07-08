@@ -20,7 +20,7 @@ Example:
     >>> print(ocr["text"])
 """
 
-from typing import TYPE_CHECKING, Any, Dict, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 if TYPE_CHECKING:
     from .client import Cencori
@@ -42,6 +42,7 @@ class VisionModule:
         image_url: Optional[str] = None,
         image_base64: Optional[str] = None,
         mime_type: Optional[str] = None,
+        images: Optional[List[Dict[str, str]]] = None,
         prompt: Optional[str] = None,
         model: Optional[str] = None,
         max_tokens: Optional[int] = None,
@@ -51,7 +52,10 @@ class VisionModule:
         """
         Analyze an image with a vision-capable model.
 
-        Provide exactly one of ``image_url`` or ``image_base64`` (with ``mime_type``).
+        Provide one of:
+          - ``image_url``
+          - ``image_base64`` + ``mime_type``
+          - ``images`` — list of ``{'url': ...}`` or ``{'base64': ..., 'mime_type': ...}``
 
         Returns:
             Dict with keys ``analysis``, ``model``, ``provider``, ``usage``, ``cost``.
@@ -63,6 +67,7 @@ class VisionModule:
                 image_url=image_url,
                 image_base64=image_base64,
                 mime_type=mime_type,
+                images=images,
                 prompt=prompt,
                 model=model,
                 max_tokens=max_tokens,
@@ -161,17 +166,20 @@ class VisionModule:
         image_url: Optional[str] = None,
         image_base64: Optional[str] = None,
         mime_type: Optional[str] = None,
+        images: Optional[List[Dict[str, str]]] = None,
         prompt: Optional[str] = None,
         model: Optional[str] = None,
         max_tokens: Optional[int] = None,
         temperature: Optional[float] = None,
         response_format: Optional[str] = None,
     ) -> Dict[str, Any]:
-        if not image_url and not image_base64:
-            raise ValueError("vision request requires image_url or image_base64")
+        if not image_url and not image_base64 and not images:
+            raise ValueError("vision request requires image_url, image_base64, or images")
 
         body: Dict[str, Any] = {}
-        if image_url:
+        if images:
+            body["images"] = images
+        elif image_url:
             body["image_url"] = image_url
         else:
             body["image_base64"] = image_base64
