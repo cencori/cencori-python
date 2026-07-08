@@ -27,7 +27,42 @@ embedding = cencori.ai.embeddings(
     model="text-embedding-3-small"
 )
 print(len(embedding.embeddings[0]))
+
+# Vision — analyze, describe, OCR, classify
+result = cencori.vision.analyze(
+    image_url="https://example.com/photo.jpg",
+    prompt="What breed of dog is this?",
+)
+print(result["analysis"])
 ```
+
+## Vision
+
+Analyze, describe, OCR, and classify images. Routes across OpenAI, Anthropic, and Google vision-capable models.
+
+```python
+# From a URL
+result = cencori.vision.analyze(
+    image_url="https://example.com/photo.jpg",
+    prompt="Describe the mood of this photo",
+)
+
+# OCR from a local file
+import base64
+with open("receipt.png", "rb") as f:
+    b64 = base64.b64encode(f.read()).decode()
+
+ocr = cencori.vision.ocr(image_base64=b64, mime_type="image/png")
+print(ocr["text"])
+
+# Structured classification
+classification = cencori.vision.classify(image_url="https://example.com/product.jpg")
+# classification["classification"] is a dict when the model returns valid JSON
+```
+
+Async variants: `cencori.vision.a_analyze()`, `a_describe()`, `a_ocr()`, `a_classify()`.
+
+Full API in [docs](https://cencori.com/docs/ai/endpoints/vision).
 
 ## Async Support
 
