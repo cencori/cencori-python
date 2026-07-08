@@ -64,6 +64,33 @@ Async variants: `cencori.vision.a_analyze()`, `a_describe()`, `a_ocr()`, `a_clas
 
 Full API in [docs](https://cencori.com/docs/ai/endpoints/vision).
 
+## Documents
+
+Extract text from PDFs and images, summarize, and answer questions. Text-based PDFs use native parsing — no LLM tokens.
+
+```python
+# Extract text (native PDF parse — free)
+result = cencori.documents.extract(
+    document_url="https://example.com/contract.pdf",
+)
+print(result["method"])  # 'pdf_text' — no LLM cost
+
+# Summarize
+summary = cencori.documents.summarize(document_url="https://example.com/report.pdf")
+print(summary["summary"])
+
+# Q&A — strict "Not found" if answer isn't present
+answer = cencori.documents.query(
+    document_url="https://example.com/contract.pdf",
+    question="What is the termination clause?",
+)
+print(answer["answer"])
+```
+
+Async variants: `a_extract()`, `a_summarize()`, `a_query()`.
+
+Full API in [docs](https://cencori.com/docs/ai/endpoints/documents).
+
 ## Async Support
 
 All methods have async counterparts:
